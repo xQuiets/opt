@@ -4,12 +4,15 @@
 using namespace std;
 
 
-bool isPrimeBase(int n)
-{
+bool isPrimeBase(int n) {
     if (n < 2) return false;
     if (n == 2) return true;
-    for (int i = 3; i < n; i++)
+    if (n % 2 == 0) return false; // исключаем четные числа
+    int p = sqrt(n);
+    // Проверяем только нечетные делители до корня из n
+    for (int i = 3; i <= p; i += 2) { //надо вычислить корень из n перед циклом
         if (n % i == 0) return false;
+    }
     return true;
 }
 
